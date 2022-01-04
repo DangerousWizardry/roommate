@@ -165,49 +165,6 @@ $nextRoom["4BB"] = (!empty($nextCourse["4BB"])?findCurrentRoom($all_rooms,$cours
 
 
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>WellTimetable</title>
-	<style type="text/css">
-		body{
-			background: rgb(2,0,36);
-			background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: row;
-			font-family: 'Roboto';
-			height: 95vh;
-		}
-		.group-box{
-			background-color: #fff;
-			width: 300px;
-			border-radius: 5px;
-			padding: 10px;
-			text-align: center;
-			transition: all 0.5s;
-			margin: 10px;
-		}
-		.group-box:hover{
-			transform: scale(1.1);
-			cursor: pointer;
-
-		}
-		.title{
-			font-size: 36px;
-			font-weight: bold;
-		}
-		.infos{
-			border-top: 1px grey ridge;
-			font-size: 20px;
-			padding: 5px;
-		}
-	</style>
-</head>
-<body>
-
 <?php
 /*
 echo "<tr>";
@@ -233,7 +190,50 @@ for ($i=0; $i < count($courses); $i++) {
 */
 
 ?>
-<div class="group-box">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WellTimetable</title>
+	<link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="responsive-menu">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text"><a href="/">Roommate 🚪</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a href="#4BB">4BB</a></li>
+      <li><a href="#4BIM">4BIM</a></li>
+      <li><a href="about.php" class="button secondary clear">À propos</a></li>
+    </ul>
+  </div>
+</div>
+
+  <nav class="circular-menu dimmeable" id="navigator">
+	   <a href="#" class="circular-menu-item primary-circle">3BIM</a>
+	   <a href="#4BIM" class="circular-menu-item primary-circle">4BIM</a>
+	   <a href="#" class="circular-menu-item primary-circle">5BIM</a>
+	   <a href="#" class="circular-menu-item secondary-circle">3BB</a>
+	   <a href="#4BB" class="circular-menu-item secondary-circle">4BB</a>
+	   <a href="#" class="circular-menu-item secondary-circle">5BB</a>
+	   <label>Choisissez votre groupe</label>
+	</nav>
+
+<div class="flex-container">
+	<div class="group-box dimmeable" id="4BB">
 	<div class="title">4BB</div>
 	<div class="infos"><p><b>Cours actuel <br><i>(<?php echo date("d/m/Y H:i",$currentWeek[$hourIndex]); ?>)</i></b></p><p><?php echo $currentCourse["4BB"]; ?></p><p><?php echo $currentRoom["4BB"]; ?></p>
 		</div>
@@ -243,7 +243,7 @@ for ($i=0; $i < count($courses); $i++) {
 	<p><?php echo $nextCourse["4BB"]; ?></p><p><?php echo $nextRoom["4BB"]; ?></p></div>
 </div>
 
-<div class="group-box">
+<div class="group-box dimmeable" id="4BIM">
 	<div class="title">4BIM</div>
 	<div class="infos"><p><b>Cours actuel <br><i>(<?php echo date("d/m/Y H:i",$currentWeek[$hourIndex]); ?>)</i></b></p><p><?php echo $currentCourse["4BIM"]; ?></p><p><?php echo $currentRoom["4BIM"]; ?></p>
 		</div>
@@ -252,5 +252,14 @@ for ($i=0; $i < count($courses); $i++) {
 	<div class="infos"><p><b>Cours suivant</b></p>
 	<p><?php echo $nextCourse["4BIM"]; ?></p><p><?php echo $nextRoom["4BIM"]; ?></p></div>
 </div>
+</div>
+
+</header>
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
